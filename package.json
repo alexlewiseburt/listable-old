@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/jest": "^27.0.2",
     "@types/selenium-webdriver": "^4.0.16",
-    "chromedriver": "^95.0.0",
+    "chromedriver": "^107.0.3",
     "express": "^4.17.1",
     "geckodriver": "^3.2.0",
     "jest": "^27.3.1",
