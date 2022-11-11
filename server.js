@@ -3,6 +3,15 @@ const path = require("path");
 const app = express();
 const { bots, playerRecord } = require("./data");
 const { shuffleArray } = require("./utils");
+const Rollbar = require("rollbar");
+
+var rollbar = new Rollbar({
+  accessToken: "28074d2127c94899989736044ac21bdd",
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+});
+
+rollbar.log("Hello world!");
 
 app.use(express.json());
 
@@ -15,6 +24,7 @@ app.get("/api/robots", (req, res) => {
     res.status(200).send(botsArr);
   } catch (error) {
     console.log("ERROR GETTING BOTS", error);
+    rollbar.log("ERROR GETTING BOTS", error);
     res.sendStatus(400);
   }
 });
@@ -27,6 +37,7 @@ app.get("/api/robots/five", (req, res) => {
     res.status(200).send({ choices, compDuo });
   } catch (error) {
     console.log("ERROR GETTING FIVE BOTS", error);
+    rollbar.log("ERROR GETTING FIVE BOTS", error);
     res.sendStatus(400);
   }
 });
@@ -66,6 +77,7 @@ app.post("/api/duel", (req, res) => {
     }
   } catch (error) {
     console.log("ERROR DUELING", error);
+    rollbar.log("ERROR DUELING", error);
     res.sendStatus(400);
   }
 });
@@ -75,6 +87,7 @@ app.get("/api/player", (req, res) => {
     res.status(200).send(playerRecord);
   } catch (error) {
     console.log("ERROR GETTING PLAYER STATS", error);
+    rollbar.log("ERROR GETTING PLAYER STATS", error);
     res.sendStatus(400);
   }
 });
