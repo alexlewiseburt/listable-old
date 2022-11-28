@@ -1,6 +1,13 @@
 const express = require("express");
 const path = require("path");
-const { getList, getAllLists, createList } = require("./backend/controller");
+const cors = require("cors");
+
+const {
+  getList,
+  getAllLists,
+  createList,
+  seed,
+} = require("./backend/controller");
 
 const app = express();
 
@@ -14,6 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/api/lists/:id", getList);
 app.get("/api/lists", getAllLists);
 app.post("/api/lists", createList);
+app.post("/seed", seed);
 
 const port = process.env.PORT || 3000;
 
