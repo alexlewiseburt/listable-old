@@ -1,0 +1,4 @@
+1. Update controller.js, convert cities/countries into our data model
+2. Create postgres database on Heroku, update url inside .env
+3. Run nodemon server.js and test your endpoints using postman, you can also open the postgres databse on Heroku and refresh the page to see the data show up
+4. Profit
